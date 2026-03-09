@@ -1,0 +1,12 @@
+{
+  "name": "berkeozkaynakk-emutabakatform",
+  "version": "1.0.0",
+  "description": "berkeozkaynakk-emutabakatform",
+  "repositoryLayout": {
+    "format": "json",
+    "formatVersion": "6",
+    "keepClient": "false",
+    "metaInformation": ".gctsmetadata/",
+    "tableContent": "true"
+  }
+}
