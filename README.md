@@ -1,0 +1,2 @@
+# emutabakatform
+Mutabakat Paketi
