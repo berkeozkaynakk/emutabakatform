@@ -306,8 +306,8 @@
             AND customer        EQ @gt_kna1_tax-kunnr
             AND specialglcode   IN @r_umskz_m
             AND transactioncurrency IN @s_waers
-            AND isreversal        EQ @space
-            AND isreversed        EQ @space
+*            AND isreversal        EQ @space
+*            AND isreversed        EQ @space
           APPENDING CORRESPONDING FIELDS OF TABLE @gt_bsid.
 
 *          SELECT
@@ -449,8 +449,8 @@
             AND customer         EQ @gt_kna1_tax-kunnr
             AND specialglcode    IN @r_umskz_m
             AND transactioncurrency IN @s_waers
-            AND isreversal        EQ @space
-            AND isreversed        EQ @space
+*            AND isreversal        EQ @space
+*            AND isreversed        EQ @space
           APPENDING CORRESPONDING FIELDS OF TABLE @gt_bsid.
 
 *          SELECT
@@ -602,8 +602,8 @@
             AND supplier        EQ @gt_lfa1_tax-lifnr
             AND specialglcode   IN @r_umskz_m
             AND transactioncurrency IN @s_waers
-            AND isreversal       EQ @space
-            AND isreversed        EQ @space
+*            AND isreversal       EQ @space
+*            AND isreversed        EQ @space
 *          APPENDING CORRESPONDING FIELDS OF TABLE @gt_bsik.
           INTO CORRESPONDING FIELDS OF TABLE @gt_bsik.
 
@@ -689,7 +689,7 @@
               " Hkont                 AS hkont,
               " ZBD2T ve ZBD3T CDS'te tanımlı değil
               " ZBD2T                 AS zbd2t,
-              " ZBD3T                 AS zbd3t
+              "" ZBD3T                 AS zbd3t
           FROM zetr_reco_ddl_bsikbsak
           FOR ALL ENTRIES IN @gt_lfa1_tax
            WHERE documentdate    LE @gv_last_date
@@ -702,8 +702,8 @@
             AND supplier        EQ @gt_lfa1_tax-lifnr
             AND specialglcode   IN @r_umskz_m
             AND transactioncurrency IN @s_waers
-            AND isreversal        EQ @space
-            AND isreversed       EQ @space
+*            AND isreversal        EQ @space
+*            AND isreversed       EQ @space
 *          APPENDING CORRESPONDING FIELDS OF TABLE @gt_bsik.
           INTO CORRESPONDING FIELDS OF TABLE @gt_bsik.
 
