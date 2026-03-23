@@ -287,7 +287,7 @@
               cashdiscount1days      AS zbd1t,
               clearingjournalentry   AS rebzg,
               documentitemtext       AS sgtxt,
-               clearingdate AS clearingdate
+              clearingdate AS clearingdate
               " Saknr ve Hkont CDS'te tanımlı değil
               " Saknr                 AS saknr,
               " Hkont                 AS hkont,
@@ -297,8 +297,8 @@
           FROM zetr_reco_ddl_bsidbsad
           FOR ALL ENTRIES IN @gt_kna1_tax
           WHERE documentdate    LE @gv_last_date
-*        AND  (  clearingdate    GE @gv_last_date  OR ClearingJournalEntry = '' )
-            AND  (  clearingdate    NE '00000000' OR ClearingJournalEntry = '' )
+            AND  (  clearingdate    GT @gv_last_date  OR ClearingJournalEntry = '' )
+*            AND  (  clearingdate    NE '00000000' OR ClearingJournalEntry = '' )
             AND companycode     IN @s_bukrs
             AND fiscalyear      LE @p_gjahr
             AND businessarea    IN @s_gsber  "hkizilkaya
@@ -441,8 +441,8 @@
           FROM zetr_reco_ddl_bsidbsad
           FOR ALL ENTRIES IN @gt_kna1_tax
           WHERE documentdate    LE @gv_last_date
-*        AND (  clearingdate    GE @gv_last_date  OR ClearingJournalEntry = '' )
-            AND  (  clearingdate    NE '00000000' OR ClearingJournalEntry = '' )
+            AND (  clearingdate    GT @gv_last_date  OR ClearingJournalEntry = '' )
+*            AND  (  clearingdate    NE '00000000' OR ClearingJournalEntry = '' )
             AND companycode      IN @s_bukrs
             AND fiscalyear       LE @p_gjahr
             AND businessarea     IN @s_gsber  "hkizilkaya
@@ -595,8 +595,8 @@
           FROM zetr_reco_ddl_bsikbsak
           FOR ALL ENTRIES IN @gt_lfa1_tax
           WHERE documentdate    LE @gv_last_date
-*            AND  (  clearingdate    GE @gv_last_date  OR ClearingJournalEntry EQ '' )
-            AND  (  clearingdate    NE '00000000' OR ClearingJournalEntry = '' )
+            AND  (  clearingdate    GT @gv_last_date  OR ClearingJournalEntry EQ '' )
+*            AND  (  clearingdate    NE '00000000' OR ClearingJournalEntry = '' )
             AND companycode     IN @s_bukrs
             AND fiscalyear     LE @p_gjahr
             AND businessarea    IN @s_gsber
@@ -696,8 +696,8 @@
           FROM zetr_reco_ddl_bsikbsak
           FOR ALL ENTRIES IN @gt_lfa1_tax
            WHERE documentdate    LE @gv_last_date
-*            AND   (  clearingdate    GE @gv_last_date  OR ClearingJournalEntry EQ '' )
-            AND (  clearingdate    NE '00000000' OR ClearingJournalEntry = '' )
+            AND   (  clearingdate    GT @gv_last_date  OR ClearingJournalEntry EQ '' )
+*            AND (  clearingdate    NE '00000000' OR ClearingJournalEntry = '' )
             AND companycode     IN @s_bukrs
             AND fiscalyear     LE @p_gjahr
             AND businessarea    IN @s_gsber
