@@ -187,7 +187,8 @@
           IF <fs_data>-hesap_tur <> ls_prev_key-hesap_tur
              OR <fs_data>-hesap_no  <> ls_prev_key-hesap_no
              OR <fs_data>-kunnr     <> ls_prev_key-kunnr
-             OR <fs_data>-lifnr     <> ls_prev_key-lifnr.
+             OR <fs_data>-lifnr     <> ls_prev_key-lifnr
+             OR <fs_data>-umskz     <> ls_prev_key-umskz.
             TRY.
                 lv_uuid = cl_system_uuid=>create_uuid_c22_static( ).
 
