@@ -43,49 +43,49 @@
 
     FIELD-SYMBOLS: <lr_bukrs> TYPE ty_bukrs.
 
-    LOOP AT it_parameters INTO DATA(ls_parameter).
-      CASE ls_parameter-selname.
-        WHEN 'S_ERDAT'.
-          APPEND VALUE #( sign = ls_parameter-sign
-                          option = ls_parameter-option
-                          low = ls_parameter-low
-                          high = ls_parameter-high ) TO lr_erdat.
-        WHEN 'S_KUNNR'.
-          APPEND VALUE #( sign = ls_parameter-sign
-                          option = ls_parameter-option
-                          low = ls_parameter-low
-                          high = ls_parameter-high ) TO lr_kunnr.
-        WHEN 'S_LIFNR'.
-          APPEND VALUE #( sign = ls_parameter-sign
-                          option = ls_parameter-option
-                          low = ls_parameter-low
-                          high = ls_parameter-high ) TO lr_lifnr.
-        WHEN 'P_SELD'.
-          DATA(lv_seld) = CONV bukrs( ls_parameter-low ).
-        WHEN 'P_SELK'.
-          DATA(lv_selk) = CONV bukrs( ls_parameter-low ).
-        WHEN 'P_BLK'.
-          DATA(lv_blk) = CONV bukrs( ls_parameter-low ).
-        WHEN 'P_DEL'.
-          DATA(lv_del) = CONV bukrs( ls_parameter-low ).
-      ENDCASE.
-    ENDLOOP.
+*    LOOP AT it_parameters INTO DATA(ls_parameter).
+*      CASE ls_parameter-selname.
+*        WHEN 'S_ERDAT'.
+*          APPEND VALUE #( sign = ls_parameter-sign
+*                          option = ls_parameter-option
+*                          low = ls_parameter-low
+*                          high = ls_parameter-high ) TO lr_erdat.
+*        WHEN 'S_KUNNR'.
+*          APPEND VALUE #( sign = ls_parameter-sign
+*                          option = ls_parameter-option
+*                          low = ls_parameter-low
+*                          high = ls_parameter-high ) TO lr_kunnr.
+*        WHEN 'S_LIFNR'.
+*          APPEND VALUE #( sign = ls_parameter-sign
+*                          option = ls_parameter-option
+*                          low = ls_parameter-low
+*                          high = ls_parameter-high ) TO lr_lifnr.
+*        WHEN 'P_SELD'.
+*          DATA(lv_seld) = CONV bukrs( ls_parameter-low ).
+*        WHEN 'P_SELK'.
+*          DATA(lv_selk) = CONV bukrs( ls_parameter-low ).
+*        WHEN 'P_BLK'.
+*          DATA(lv_blk) = CONV bukrs( ls_parameter-low ).
+*        WHEN 'P_DEL'.
+*          DATA(lv_del) = CONV bukrs( ls_parameter-low ).
+*      ENDCASE.
+*    ENDLOOP.
 
-    TRY.
-        DATA(lo_log) = cl_bali_log=>create_with_header( cl_bali_header_setter=>create( object = 'ZETR_RECO_LOG'
-                                                                                       subobject = 'ZETR_RECO_MERGE_TAX' ) ).
-      CATCH cx_bali_runtime.
-    ENDTRY.
+*    TRY.
+*        DATA(lo_log) = cl_bali_log=>create_with_header( cl_bali_header_setter=>create( object = 'ZETR_RECO_LOG'
+*                                                                                       subobject = 'ZETR_RECO_MERGE_TAX' ) ).
+*      CATCH cx_bali_runtime.
+*    ENDTRY.
 
 
-    DATA(lo_message) = cl_bali_message_setter=>create( severity = if_bali_constants=>c_severity_information
-                                                       id = 'ZRECO'
-                                                       number = 226 ).
+*    DATA(lo_message) = cl_bali_message_setter=>create( severity = if_bali_constants=>c_severity_information
+*                                                       id = 'ZRECO'
+*                                                       number = 226 ).
 
-    TRY.
-        lo_log->add_item( lo_message ).
-      CATCH cx_bali_runtime.
-    ENDTRY.
+*    TRY.
+*        lo_log->add_item( lo_message ).
+*      CATCH cx_bali_runtime.
+*    ENDTRY.
 
     SELECT * FROM zreco_adrs INTO TABLE @DATA(lt_adrs).
 
@@ -248,22 +248,22 @@
         COMMIT WORK AND WAIT .
       ENDIF.
 
-      lo_message = cl_bali_message_setter=>create( severity = if_bali_constants=>c_severity_information
-                                                         id = 'ZRECO'
-                                                         number = 227 ).
+*      lo_message = cl_bali_message_setter=>create( severity = if_bali_constants=>c_severity_information
+*                                                         id = 'ZRECO'
+*                                                         number = 227 ).
 
-      TRY.
-          lo_log->add_item( lo_message ).
-        CATCH cx_bali_runtime.
-      ENDTRY.
+*      TRY.
+*          lo_log->add_item( lo_message ).
+*        CATCH cx_bali_runtime.
+*      ENDTRY.
 
     ENDIF.
 
-    IF lo_log IS NOT INITIAL.
-      TRY.
-          cl_bali_log_db=>get_instance( )->save_log( log = lo_log assign_to_current_appl_job = abap_true ).
-        CATCH cx_bali_runtime.
-      ENDTRY.
-    ENDIF.
+*    IF lo_log IS NOT INITIAL.
+*      TRY.
+*          cl_bali_log_db=>get_instance( )->save_log( log = lo_log assign_to_current_appl_job = abap_true ).
+*        CATCH cx_bali_runtime.
+*      ENDTRY.
+*    ENDIF.
 
   ENDMETHOD.
